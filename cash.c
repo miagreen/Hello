@@ -9,26 +9,15 @@ int main()
         dollars = get_float("Dollars: ");
     }while(dollars < 0);
     int cents = round(dollars * 100);
+    int coins[4] = {25, 10, 5, 1};
     int count = 0;
-    if(cents >= 25)
+    for(int i = 0; i < 4; i ++)
     {
-        count = count + (cents/25);
-        cents = cents % 25;
-    }
-    if(cents >= 10)
-    {
-        count = count + (cents / 10);
-        cents = cents % 10;
-    }
-    if (cents >= 5)
-    {
-        count = count + (cents / 5);
-        cents = cents % 5;
-    }
-    if(cents >=1)
-    {
-        count = count + (cents / 1);
-        cents = cents % 1;
+        if(cents >= coins[i])
+        {
+            count = count + cents / coins[i];
+            cents = cents % coins[i];
+        }
     }
     printf("%d\n", count);
     return 0;
